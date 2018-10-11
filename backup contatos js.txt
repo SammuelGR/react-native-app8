@@ -1,0 +1,63 @@
+//tentativa com FlatList
+import React from 'react';
+import { FlatList, Text, View } from 'react-native';
+import { connect } from 'react-redux';
+import { contatosUsuarioFetch } from '../actions/AppActions';
+import _ from 'lodash';
+
+class Contatos extends React.Component {
+    constructor(props) {
+        super(props);
+
+        this.state = { fonteDeDados: [
+            {
+                key: 'a',
+                texto: 'Registro A'
+            },
+            {
+                key: 'b',
+                texto: 'Registro B'
+            },
+            {
+                key: 'c',
+                texto: 'Registro C'
+            },
+            {
+                key: 'd',
+                texto: 'Registro D'
+            },
+        ]}
+
+    }
+
+    componentWillMount() {
+        this.props.contatosUsuarioFetch();
+        console.log('Contatos fetch: '+ this.props.contatos)
+    }
+
+    componentWillReceiveProps(nextProps) {
+
+    }
+
+    render() {
+        return (
+            <View>
+                <FlatList
+                    data={this.state.fonteDeDados}
+                    extraData={this.state}
+                    renderItem={({item}) => <Text>{item.texto}</Text>}
+                />
+            </View>
+        );
+    }
+}
+
+mapStateToProps = state => {
+    const contatos = _.map(state.ListaContatosReducer, (val, uid) => {
+        return { ...val, uid }
+    })
+    console.log('contatos stateToProps: '+contatos);
+    return { contatos }
+}
+
+export default connect(mapStateToProps, { contatosUsuarioFetch })(Contatos);
