@@ -26,9 +26,9 @@ class Conversa extends React.Component {
                     <TextInput
                         style={{ backgroundColor: '#FFF', flex: 4, fontSize: 18}}
                         value={this.props.mensagem}
-                        onChangeText={texto => false}
+                        onChangeText={texto => this.props.modificaMensagem(texto)}
                     />
-                    <TouchableHighlight onPress={this._enviarMensagem.bind(this)} underlayColor='#FFF' >
+                    <TouchableHighlight onPress={() => false} underlayColor='#FFF' >
                         <Image source={require('../imgs/enviar_mensagem.png')} />
                     </TouchableHighlight>
                 </View>
