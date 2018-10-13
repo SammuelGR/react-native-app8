@@ -2,12 +2,13 @@ import b64 from 'base-64';
 import firebase from 'firebase';
 import _ from 'lodash';
 
-import { 
-    MODIFICA_ADICIONA_CONTATO_EMAIL,
+import {
     ADICIONA_CONTATO_ERRO,
     ADICIONA_CONTATO_SUCESSO,
+    MODIFICA_ADICIONA_CONTATO_EMAIL,
+    MODIFICA_MENSAGEM,
     LISTA_CONTATO_USUARIO,
-    MODIFICA_MENSAGEM
+    SALVAR_DADOS_CONVERSA
 } from './types';
 
 export const modificaAdicionaContatoEmail = texto => {
@@ -94,5 +95,12 @@ export const modificaMensagem = texto => {
 export const enviarMensagem = (mensagem, contatoNome, contatoEmail) => {
     return ({
         type: 'xyz'
+    })
+}
+
+export const salvarDadosConversa = ( contatoNome, contatoEmail ) => {
+    return ({
+        type: SALVAR_DADOS_CONVERSA,
+        payload: { contatoNome, contatoEmail }
     })
 }

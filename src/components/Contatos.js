@@ -25,7 +25,9 @@ class Contatos extends Component {
     renderRow(contato) {
         return (
             <TouchableHighlight 
-                onPress={() => NavigationService.navigate('Conversa', { nome: contato.nome, email: contato.email })}
+                onPress={() => {
+                    NavigationService.navigate('Conversa', { nome: contato.nome, email: contato.email });
+                }}
                 underlayColor='#CCC'
             >
                 <View style={{ flex: 1, padding: 20, borderBottomWidth: 1, borderColor: "#CCC" }}>
