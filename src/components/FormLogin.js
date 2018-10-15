@@ -56,6 +56,7 @@ class FormLogin extends React.Component {
                             value={this.props.senha}
                         />
                         <Text style={{ color: '#FF0000', fontSize: 15}} >
+                            {this.props.erroLogin}
                         </Text>
                         <TouchableHighlight onPress={() => this.props.navigation.navigate('Cadastro')} >
                             <Text style={{alignSelf: 'center', color:'#FFF', fontSize: 17}}>Ainda não tem cadastro? Cadastre-se</Text>

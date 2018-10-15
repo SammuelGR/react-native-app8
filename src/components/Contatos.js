@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
-import { View, Text, TouchableHighlight, ListView } from 'react-native';
+import { ListView, Text, TouchableHighlight, View } from 'react-native';
 import { connect } from 'react-redux';
 import { contatosUsuarioFetch } from '../actions/AppActions';
 import _ from 'lodash';
-
 import NavigationService from '../services/NavigationService';
 
 class Contatos extends Component {

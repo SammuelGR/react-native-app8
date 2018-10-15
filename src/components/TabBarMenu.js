@@ -2,6 +2,7 @@ import React from 'react';
 import { Image, StatusBar, Text, TouchableHighlight, View } from 'react-native';
 import { TabBar } from 'react-native-tab-view';
 import { connect } from 'react-redux';
+import firebase from 'firebase';
 import { habilitaInclusaoContato } from '../actions/AppActions';
 
 const TabBarMenu = props => (
@@ -23,7 +24,12 @@ const TabBarMenu = props => (
                     </TouchableHighlight>
                 </View>
                 <View style={{justifyContent: 'center'}} >
-                    <Text style={{color: '#FFF', fontSize: 20}} >Sair</Text>
+                    <TouchableHighlight
+                        onPress={() => firebase.auth().signOut()
+                            .then(() => props.navigation.navigate('Login'))}
+                    >
+                        <Text style={{color: '#FFF', fontSize: 20}} >Sair</Text>
+                    </TouchableHighlight>
                 </View>
             </View>
         </View>
